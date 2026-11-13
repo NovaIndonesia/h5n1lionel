@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memahami H5N1 — Edukasi Influenza Avian</title>
+<meta name="description" content="Panduan edukasi tentang influenza avian H5N1: biologi, karakteristik, penularan, gejala, pencegahan, dan pengobatan.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%2338A6A6' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#102A43;--blue:#173F5F;--teal:#38A6A6;--cyan:#BFE8E5;--off:#F7F9F8;--white:#fff;--gray:#687985;
+  --teal-ink:#1F7373;
+  --ease:cubic-bezier(.45,.05,.25,1);--t:.7s;
+  --head:'Plus Jakarta Sans',system-ui,sans-serif;--body:'Inter',system-ui,sans-serif;
+  --wrap:1120px;--pad:clamp(20px,5vw,48px);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--body);color:var(--navy);background:var(--off);line-height:1.7;font-size:1.0625rem;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--head);line-height:1.12;letter-spacing:-.02em;color:var(--navy)}
+h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:700}
+h3{font-size:1.2rem;font-weight:700;letter-spacing:-.01em}
+p{max-width:62ch}
+a{color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)}
+section{padding:clamp(72px,11vw,140px) 0}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:3px}
+.lead{font-size:1.2rem;color:var(--blue)}
+.muted{color:var(--gray)}
+.label{font-family:var(--head);font-size:.85rem;font-weight:600;color:var(--teal-ink);margin-bottom:14px;display:block}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .5s var(--ease),box-shadow .5s var(--ease)}
+nav.on{background:rgba(247,249,248,.94);box-shadow:0 1px 0 rgba(16,42,67,.09);backdrop-filter:blur(8px)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{font-family:var(--head);font-weight:800;text-decoration:none;font-size:.95rem;letter-spacing:.02em}
+.brand span{font-weight:500;color:var(--gray);margin-left:6px}
+.links{display:flex;gap:26px;list-style:none;padding:0;position:relative}
+.links a{font-size:.9rem;font-weight:500;text-decoration:none;color:var(--gray);padding:8px 0;transition:color .3s var(--ease)}
+.links a:hover,.links a.act{color:var(--navy)}
+.ind{position:absolute;bottom:2px;height:2px;background:var(--teal);width:0;left:0;transition:transform .5s var(--ease),width .5s var(--ease)}
+.burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer;position:relative}
+.burger i{position:absolute;left:11px;right:11px;height:2px;background:var(--navy);transition:transform .4s var(--ease),opacity .3s}
+.burger i:nth-child(1){top:16px}.burger i:nth-child(2){top:21px}.burger i:nth-child(3){top:26px}
+.burger[aria-expanded=true] i:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.burger[aria-expanded=true] i:nth-child(2){opacity:0}
+.burger[aria-expanded=true] i:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+
+/* buttons */
+.btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{font-family:var(--head);font-weight:600;font-size:.95rem;text-decoration:none;padding:14px 26px;border-radius:4px;border:1.5px solid var(--navy);transition:background .4s var(--ease),color .4s var(--ease),transform .4s var(--ease)}
+.btn.p{background:var(--navy);color:var(--white)}
+.btn.p:hover{background:var(--teal-ink);border-color:var(--teal-ink);transform:translateY(-2px)}
+.btn.s:hover{background:var(--navy);color:var(--white);transform:translateY(-2px)}
+
+/* hero */
+.hero{min-height:100svh;display:flex;align-items:center;padding:110px 0 70px;background:var(--white)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,5vw,72px);align-items:center}
+.hero h1{font-size:clamp(2.7rem,7vw,5.2rem);font-weight:800;letter-spacing:-.035em;margin-bottom:22px}
+.hero .lead{margin-bottom:14px;max-width:34ch}
+.hero-art{position:relative;aspect-ratio:1}
+.hero-art svg{width:100%;height:100%;overflow:visible}
+
+/* virus svg */
+.virus .env{fill:var(--cyan);stroke:var(--teal);stroke-width:3}
+.virus .mx{fill:none;stroke:var(--blue);stroke-width:1.5;stroke-dasharray:3 5;opacity:.6}
+.virus .rna path{fill:none;stroke:var(--navy);stroke-width:2.6;stroke-linecap:round}
+.virus .ha line,.virus .ha path{stroke:var(--teal-ink);stroke-width:2.6;fill:none;stroke-linecap:round}
+.virus .na line{stroke:var(--blue);stroke-width:2.6}
+.virus .na ellipse{fill:var(--blue)}
+.virus g{transition:opacity .5s var(--ease)}
+.virus[data-f] g.part{opacity:.18}
+.virus[data-f=ha] .ha,.virus[data-f=na] .na,.virus[data-f=env] .envg,.virus[data-f=rna] .rnag{opacity:1}
+.ring{fill:none;stroke:var(--cyan);stroke-width:1}
+.spin{transform-origin:200px 200px;animation:spin 140s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* intro */
+.intro .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,7vw,100px)}
+.intro .body p+p{margin-top:1.2em}
+.name-split{display:flex;gap:0;margin-top:34px;border-top:1.5px solid var(--navy)}
+.name-split div{flex:1;padding:18px 18px 0 0}
+.name-split b{font-family:var(--head);font-size:2.4rem;color:var(--teal-ink);display:block;line-height:1}
+.name-split span{font-size:.92rem;color:var(--gray);display:block;margin-top:8px}
+
+/* characteristics */
+.chars{background:var(--white)}
+.chars .wrap>header{margin-bottom:56px}
+.chars header p{margin-top:18px}
+.chars-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);align-items:center}
+.stage{background:var(--off);aspect-ratio:1;display:grid;place-items:center;padding:6%}
+.stage svg{width:100%;height:100%;overflow:visible}
+.parts{list-style:none;padding:0;border-top:1px solid rgba(16,42,67,.15)}
+.parts li{border-bottom:1px solid rgba(16,42,67,.15)}
+.parts button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;padding:18px 0;display:block}
+.parts button:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}
+.parts h3{display:flex;justify-content:space-between;align-items:center;font-size:1.1rem;transition:color .3s}
+.parts h3::after{content:'+';font-weight:500;color:var(--teal-ink);transition:transform .4s var(--ease)}
+.parts [aria-expanded=true] h3::after{transform:rotate(45deg)}
+.parts button:hover h3{color:var(--teal-ink)}
+.parts .more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.parts .more>div{overflow:hidden}
+.parts .more p{padding-top:8px;color:var(--blue);font-size:1rem}
+.parts [aria-expanded=true] .more{grid-template-rows:1fr}
+.hint{font-size:.9rem;color:var(--gray);margin-top:16px}
+
+/* transmission */
+.flow{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,1fr);margin-top:60px;counter-reset:s}
+.flow li{position:relative;padding:0 26px 0 0}
+.flow li::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--head);font-weight:700;position:relative;z-index:1}
+.flow li::after{content:'';position:absolute;top:21px;left:44px;right:0;border-top:1.5px dashed var(--teal)}
+.flow li:last-child::after{display:none}
+.flow li:last-child::before{background:var(--teal-ink)}
+.flow h3{margin:20px 0 8px}
+.flow p{font-size:.98rem;color:var(--blue)}
+.note{margin-top:56px;padding:22px 26px;border-left:3px solid var(--teal);background:var(--white);max-width:72ch}
+
+/* symptoms */
+.sym{background:var(--white)}
+.sym-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);margin-top:56px}
+.sym-col{border-top:3px solid var(--navy);padding-top:22px}
+.sym-col.h{border-color:var(--teal)}
+.sym-col>p{color:var(--gray);font-size:.98rem;margin:8px 0 18px}
+dl{margin:0}
+dt{font-family:var(--head);font-weight:600;padding-top:15px;border-top:1px solid rgba(16,42,67,.12)}
+dd{margin:2px 0 15px;font-size:.98rem;color:var(--blue);max-width:48ch}
+
+/* prevention */
+.prev-list{list-style:none;padding:0;margin-top:56px;border-top:1.5px solid var(--navy)}
+.prev-list li{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr);gap:10px 40px;padding:26px 0;border-bottom:1px solid rgba(16,42,67,.15);transition:background .5s var(--ease),padding .5s var(--ease)}
+.prev-list li:hover{background:rgba(191,232,229,.35);padding-left:14px;padding-right:14px}
+.prev-list p{color:var(--blue);font-size:1rem}
+
+/* treatment */
+.treat{background:var(--blue);color:#fff}
+.treat h2,.treat h3{color:#fff}
+.treat .label{color:var(--cyan)}
+.treat .lead{color:var(--cyan);margin-top:18px}
+.treat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,56px);margin-top:56px}
+.treat-grid div{border-top:1.5px solid var(--teal);padding-top:20px}
+.treat-grid p{color:#d6e6ea;margin-top:8px;font-size:1rem}
+.warn{margin-top:56px;font-size:.98rem;color:var(--cyan);max-width:70ch;border-left:3px solid var(--teal);padding-left:20px}
+
+/* conclusion */
+.concl{background:var(--navy);color:#fff;text-align:center}
+.concl blockquote{font-family:var(--head);font-weight:700;font-size:clamp(1.9rem,4.6vw,3.4rem);line-height:1.18;letter-spacing:-.025em;max-width:20em;margin:0 auto 36px}
+.concl p{margin:0 auto 14px;color:#cfe0e6}
+.concl .btn{margin-top:26px;border-color:var(--cyan);color:var(--cyan);display:inline-block}
+.concl .btn:hover{background:var(--cyan);color:var(--navy)}
+
+/* refs */
+.refs ol{padding:0;list-style:none;margin-top:44px;border-top:1.5px solid var(--navy)}
+.refs li{padding:20px 0;border-bottom:1px solid rgba(16,42,67,.15);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1.6fr);gap:8px 40px}
+.refs a{color:var(--teal-ink);font-weight:500;text-underline-offset:4px;word-break:break-word}
+.refs a:hover{color:var(--navy)}
+footer{padding:36px 0;font-size:.9rem;color:var(--gray);border-top:1px solid rgba(16,42,67,.12)}
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity var(--t) var(--ease),transform var(--t) var(--ease);transition-delay:calc(var(--i,0)*110ms)}
+.js .rv.in{opacity:1;transform:none}
+.js .hero-art{clip-path:inset(0 0 100% 0);transition:clip-path 1.4s var(--ease) .25s}
+.js .hero-art.in{clip-path:inset(0 0 0 0)}
+
+@media(max-width:900px){
+  .links{position:fixed;inset:68px 0 auto;flex-direction:column;gap:0;background:var(--off);padding:8px var(--pad) 20px;box-shadow:0 14px 24px rgba(16,42,67,.08);transform:translateY(-12px);opacity:0;visibility:hidden;transition:all .45s var(--ease)}
+  .links.open{transform:none;opacity:1;visibility:visible}
+  .links a{display:block;padding:14px 0;font-size:1rem;border-bottom:1px solid rgba(16,42,67,.08)}
+  .ind{display:none}.burger{display:block}
+  nav:has(.links.open){background:var(--off)}
+  .hero{padding-top:96px;min-height:auto}
+  .hero .wrap,.intro .wrap,.chars-grid,.sym-grid,.treat-grid{grid-template-columns:1fr}
+  .hero-art{max-width:420px;margin:0 auto;order:-1;width:78%}
+  .flow{grid-template-columns:1fr;gap:0}
+  .flow li{padding:0 0 34px 64px}
+  .flow li::before{position:absolute;left:0;top:0}
+  .flow li::after{left:21px;right:auto;top:44px;bottom:0;border-top:0;border-left:1.5px dashed var(--teal)}
+  .flow h3{margin-top:8px}
+  .prev-list li,.refs li{grid-template-columns:1fr}
+  .name-split b{font-size:1.9rem}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important}
+  .js .rv,.js .hero-art{opacity:1;transform:none;clip-path:none}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">H5N1<span>INFLUENZA AVIAN</span></a>
+    <button class="burger" aria-label="Buka menu" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button>
+    <ul class="links" id="menu">
+      <li><a href="#what">Pengantar</a></li>
+      <li><a href="#biology">Biologi</a></li>
+      <li><a href="#transmission">Penularan</a></li>
+      <li><a href="#symptoms">Gejala</a></li>
+      <li><a href="#prevention">Pencegahan</a></li>
+      <li><a href="#treatment">Pengobatan</a></li>
+      <li><a href="#references">Referensi</a></li>
+      <span class="ind" aria-hidden="true"></span>
+    </ul>
+  </div>
+</nav>
+
+<main id="top">
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <h1 class="rv">Memahami H5N1</h1>
+      <p class="lead rv" style="--i:1">Menjelajahi biologi, karakteristik, penularan, dan pencegahan Influenza Avian.</p>
+      <p class="muted rv" style="--i:2">H5N1 adalah virus yang terutama menginfeksi unggas. Panduan ini menjelaskan bagaimana virus ini tersusun, bagaimana penyebarannya, dan bagaimana masyarakat dapat tetap aman.</p>
+      <div class="btns rv" style="--i:3">
+        <a class="btn p" href="#biology">Jelajahi Virus</a>
+        <a class="btn s" href="#prevention">Pelajari Pencegahan</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true"><svg class="virus" viewBox="0 0 400 400" data-build="hero"></svg></div>
+  </div>
+</header>
+
+<section class="intro" id="what">
+  <div class="wrap">
+    <div class="rv"><span class="label">Pengantar</span><h2>Apa itu H5N1?</h2></div>
+    <div class="body">
+      <p class="lead rv">H5N1 adalah subtipe <em>virus influenza A</em> yang menyebabkan influenza avian, yang biasa disebut flu burung.</p>
+      <p class="rv"><strong>Virus</strong> adalah partikel infeksius yang sangat kecil dan hanya dapat memperbanyak diri di dalam sel makhluk hidup. Virus influenza A menginfeksi banyak hewan, dan unggas air liar seperti bebek adalah inang alaminya. H5N1 lekat dengan unggas karena mudah menyebar di antara burung liar dan unggas peliharaan, terutama unggas ternak seperti ayam dan bebek.</p>
+      <p class="rv">Sesekali virus ini menginfeksi hewan lain, termasuk mamalia, dan dalam keadaan tertentu manusia. Kasus pada manusia jarang terjadi dan biasanya terjadi setelah kontak dekat dengan unggas yang terinfeksi atau lingkungan yang tercemar.</p>
+      <div class="name-split rv" aria-label="Arti nama H5N1">
+        <div><b>H5</b><span>Hemaglutinin tipe 5, protein permukaan yang membantu virus masuk ke sel.</span></div>
+        <div><b>N1</b><span>Neuraminidase tipe 1, protein permukaan yang membantu virus baru keluar dari sel.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chars" id="biology">
+  <div class="wrap">
+    <header class="rv"><span class="label">Karakteristik virus</span><h2>Di dalam partikel H5N1</h2>
+      <p class="lead">H5N1 termasuk famili <em>Orthomyxoviridae</em>, genus <em>Alphainfluenzavirus</em>. Pilih salah satu bagian untuk menyorotnya pada ilustrasi.</p></header>
+    <div class="chars-grid">
+      <div class="stage rv" role="img" aria-label="Ilustrasi 2D berlabel partikel virus H5N1 yang menunjukkan RNA, selubung, hemaglutinin, dan neuraminidase"><svg class="virus" id="v2" viewBox="-10 -10 420 420" data-build="lab"></svg></div>
+      <div>
+        <ul class="parts rv">
+          <li><button aria-expanded="false" data-f="rna"><h3>Materi genetik: RNA</h3><div class="more"><div><p>Genom tersusun atas RNA, bukan DNA, dan terbagi menjadi 8 segmen terpisah yang membawa instruksi untuk membuat virus baru. Karena penyalinan RNA mudah keliru, virus influenza berubah seiring waktu.</p></div></div></button></li>
+          <li><button aria-expanded="false" data-f="env"><h3>Selubung lipid</h3><div class="more"><div><p>Lapisan lemak terluar yang diambil dari sel inang. Selubung ini membungkus virus dan menahan protein permukaan pada tempatnya. Sabun dan deterjen memecah lemak, dan itulah salah satu alasan mencuci tangan efektif.</p></div></div></button></li>
+          <li><button aria-expanded="false" data-f="ha"><h3>Hemaglutinin (H5)</h3><div class="more"><div><p>Protein berbentuk duri yang menempel pada reseptor di sel inang, seperti kunci yang mencari gemboknya. H5 menempel dengan baik pada sel unggas, tetapi jauh lebih sulit pada saluran napas atas manusia.</p></div></div></button></li>
+          <li><button aria-expanded="false" data-f="na"><h3>Neuraminidase (N1)</h3><div class="more"><div><p>Enzim berbentuk jamur yang memotong virus agar terlepas dari sel yang terinfeksi sehingga virus baru dapat menyebar. Sebagian obat antivirus bekerja dengan menghambatnya.</p></div></div></button></li>
+        </ul>
+        <p class="hint rv">Lebar virus sekitar 100 nanometer, jauh lebih kecil daripada sel mana pun.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="transmission">
+  <div class="wrap">
+    <div class="rv"><span class="label">Penularan</span><h2>Bagaimana H5N1 menyebar</h2>
+      <p class="lead" style="margin-top:18px">Virus ini terutama berpindah antarburung. Manusia hanya jarang tertular, sehingga memahami paparan lebih penting daripada rasa cemas.</p></div>
+    <ol class="flow">
+      <li class="rv" style="--i:0"><h3>Unggas terinfeksi</h3><p>Burung liar dan unggas peliharaan membawa virus dan menularkannya saat sakit.</p></li>
+      <li class="rv" style="--i:1"><h3>Lendir dan kotoran</h3><p>Virus keluar lewat air liur, cairan hidung, dan feses.</p></li>
+      <li class="rv" style="--i:2"><h3>Lingkungan tercemar</h3><p>Kandang, air, peralatan, dan tanah dapat membawa virus.</p></li>
+      <li class="rv" style="--i:3"><h3>Infeksi manusia (jarang)</h3><p>Kontak dekat tanpa perlindungan dengan unggas terinfeksi atau tempat tercemar dapat menyebabkan paparan.</p></li>
+    </ol>
+    <p class="note rv">Penularan H5N1 antarmanusia sangat terbatas, dan penularan berkelanjutan antarmanusia belum teramati. Lembaga kesehatan terus memantau virus ini karena virus influenza dapat berubah.</p>
+  </div>
+</section>
+
+<section class="sym" id="symptoms">
+  <div class="wrap">
+    <div class="rv"><span class="label">Gejala</span><h2>Tanda-tanda infeksi</h2></div>
+    <div class="sym-grid">
+      <div class="sym-col rv">
+        <h3>Pada unggas</h3><p>Tingkat keparahan berbeda menurut spesies dan galur virus.</p>
+        <dl>
+          <dt>Gejala pernapasan</dt><dd>Batuk, bersin, atau napas yang berat.</dd>
+          <dt>Nafsu makan menurun</dt><dd>Unggas makan dan minum jauh lebih sedikit.</dd>
+          <dt>Lesu</dt><dd>Unggas menjadi lemah, diam, dan tidak aktif.</dd>
+          <dt>Telur berkurang</dt><dd>Produksi telur turun, kadang disertai telur bercangkang lunak.</dd>
+          <dt>Sakit mendadak atau mati</dt><dd>Pada kasus berat, banyak unggas dalam satu kandang mati dengan cepat.</dd>
+        </dl>
+      </div>
+      <div class="sym-col h rv" style="--i:1">
+        <h3>Pada manusia</h3><p>Gejala dapat berkisar dari ringan hingga berat.</p>
+        <dl>
+          <dt>Demam</dt><dd>Suhu tubuh meningkat, sering disertai menggigil.</dd>
+          <dt>Batuk</dt><dd>Batuk yang menetap dan dapat memburuk.</dd>
+          <dt>Sakit tenggorokan</dt><dd>Nyeri atau iritasi saat menelan.</dd>
+          <dt>Nyeri otot</dt><dd>Badan terasa pegal dan lelah.</dd>
+          <dt>Kesulitan bernapas</dt><dd>Pada kasus berat, dapat terjadi sesak napas atau pneumonia. Kondisi ini membutuhkan perawatan medis segera.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="prevention">
+  <div class="wrap">
+    <div class="rv"><span class="label">Pencegahan</span><h2>Cara praktis untuk tetap aman</h2>
+      <p class="lead" style="margin-top:18px">Sebagian besar pencegahan bertumpu pada kebersihan, menjauhi hewan sakit, dan penanganan makanan yang hati-hati.</p></div>
+    <ul class="prev-list">
+      <li class="rv"><h3>Jaga kebersihan diri</h3><p>Mandi dan ganti pakaian setelah berada di sekitar unggas atau peternakan. Hindari menyentuh wajah dengan tangan yang belum dicuci.</p></li>
+      <li class=
